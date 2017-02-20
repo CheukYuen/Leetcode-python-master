@@ -6,21 +6,19 @@ class Solution(object):
         """
         visited = set()
         self.ans = 0
-        self.dfs([], visited, N, 1)
+        self.dfs(visited, N, 1)
         return self.ans
 
-    def dfs(self, path, visited, N, depth):
-        if len(path) == N:
+    def dfs(self, visited, N, depth):
+        if depth == N+1:
             self.ans += 1
             return
         for i in range(N):
             if i + 1 in visited or (i + 1) % depth != 0 and depth % (i + 1) != 0:
                 continue
             visited.add(i + 1)
-            path.append(i + 1)
-            self.dfs(path, visited, N, depth + 1)
+            self.dfs(visited, N, depth + 1)
             visited.remove(i + 1)
-            del path[-1]
 
 
 test = Solution()
@@ -28,8 +26,9 @@ print test.countArrangement(3)
 
 # https://leetcode.com/contest/leetcode-weekly-contest-20/problems/beautiful-arrangement/
 # 526. Beautiful Arrangement
-# Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array that is constructed by
-# these N numbers successfully if one of the following is true for the ith position (1 ≤ i ≤ N) in this array:
+# Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array that is
+# constructed by these N numbers successfully if one of the following is true for the ith position
+# (1 <= i <= N) in this array:
 #
 # The number at the ith position is divisible by i.
 # i is divisible by the number at the ith position.
