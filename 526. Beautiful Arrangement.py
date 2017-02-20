@@ -22,7 +22,9 @@ class Solution(object):
 
 
 test = Solution()
-print test.countArrangement(3)
+print test.countArrangement(10)
+
+# Time: O(n!)
 
 # https://leetcode.com/contest/leetcode-weekly-contest-20/problems/beautiful-arrangement/
 # 526. Beautiful Arrangement
